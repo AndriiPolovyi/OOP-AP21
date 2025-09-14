@@ -1,20 +1,78 @@
-// Lab1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <vector>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+class CoaxialCable {
+private:
+    double Z; // хвильовий опір
+    double D; // діаметр
+    double L; // довжина
+
+public:
+    // Конструктор за замовчуванням
+    CoaxialCable() {
+        Z = 50;
+        D = 5;
+        L = 1;
+        cout << "Створено кабель за замовчуванням.\n";
+    }
+
+    // Конструктор з параметрами
+    CoaxialCable(double z, double d, double l) {
+        if (z > 0 && d > 0 && l > 0) {
+            Z = z;
+            D = d;
+            L = l;
+        }
+        else {
+            Z = 50;
+            D = 5;
+            L = 1;
+            cout << "Некоректні дані. Встановлено значення за замовчуванням.\n";
+        }
+    }
+
+    // Метод для виводу
+    void print() {
+        cout << "Кабель: Z=" << Z << " Ом, D=" << D << " мм, L=" << L << " м\n";
+    }
+
+    // Сеттер довжини з перевіркою
+    void setLength(double l) {
+        if (l > 0) L = l;
+        else cout << "Помилка: довжина повинна бути додатною.\n";
+    }
+
+    double getZ() { return Z; }
+
+    // Статичний метод фільтрації
+    static vector<CoaxialCable> filterByZ(vector<CoaxialCable> cables, double targetZ) {
+        vector<CoaxialCable> res;
+        for (auto& c : cables) {
+            if (c.Z == targetZ) res.push_back(c);
+        }
+        return res;
+    }
+};
+
+int main() {
+    // Створюємо кабелі
+    CoaxialCable a(50, 5, 10);
+    CoaxialCable b(75, 7, 5);
+    CoaxialCable c(50, 6, 25);
+
+    vector<CoaxialCable> list = { a, b, c };
+
+    cout << "--- Всі кабелі ---\n";
+    for (auto& x : list) x.print();
+
+    cout << "--- Тест помилкового значення ---\n";
+    a.setLength(-3);
+
+    cout << "--- Фільтрація (Z=50) ---\n";
+    vector<CoaxialCable> filt = CoaxialCable::filterByZ(list, 50);
+    for (auto& x : filt) x.print();
+
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
