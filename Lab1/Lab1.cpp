@@ -56,7 +56,7 @@ public:
 };
 
 int main() {
-    // Створюємо кабелі
+    // Створення кабеля
     CoaxialCable a(50, 5, 10);
     CoaxialCable b(75, 7, 5);
     CoaxialCable c(50, 6, 25);
