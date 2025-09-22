@@ -4,12 +4,12 @@ using namespace std;
 
 class CoaxialCable {
 private:
-    double Z; // хвильовий опір
-    double D; // діаметр
-    double L; // довжина
+    double Z; 
+    double D; 
+    double L; 
 
 public:
-    // Конструктор за замовчуванням
+    
     CoaxialCable() {
         Z = 50;
         D = 5;
@@ -17,7 +17,6 @@ public:
         cout << "Створено кабель за замовчуванням.\n";
     }
 
-    // Конструктор з параметрами
     CoaxialCable(double z, double d, double l) {
         if (z > 0 && d > 0 && l > 0) {
             Z = z;
@@ -32,12 +31,10 @@ public:
         }
     }
 
-    // Метод для виводу
     void print() {
         cout << "Кабель: Z=" << Z << " Ом, D=" << D << " мм, L=" << L << " м\n";
     }
 
-    // Сеттер довжини з перевіркою
     void setLength(double l) {
         if (l > 0) L = l;
         else cout << "Помилка: довжина повинна бути додатною.\n";
@@ -45,7 +42,6 @@ public:
 
     double getZ() { return Z; }
 
-    // Статичний метод фільтрації
     static vector<CoaxialCable> filterByZ(vector<CoaxialCable> cables, double targetZ) {
         vector<CoaxialCable> res;
         for (auto& c : cables) {
@@ -56,7 +52,7 @@ public:
 };
 
 int main() {
-    // Створення кабеля
+
     CoaxialCable a(50, 5, 10);
     CoaxialCable b(75, 7, 5);
     CoaxialCable c(50, 6, 25);
