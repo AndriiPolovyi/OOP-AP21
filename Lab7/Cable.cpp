@@ -75,6 +75,6 @@ void CableInventory::removeCable() {
         std::cout << "-> Kabel " << index << " vydaleno.\n";
     }
     else {
-        std::cout << "POMYLKA: Nevirnyi nomer! Ye lyshe vid 0 do " << cables.size() - 1 << ".\n";
+        std::cout << "POMYLKA: Nevirny nomer! Ye lyshe vid 0 do " << cables.size() - 1 << ".\n";
     }
 }
