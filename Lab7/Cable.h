@@ -1,25 +1,31 @@
+#pragma once 
 #include <iostream>
-#include <vector>  
+#include <vector>
 #include <string>
 
 struct CoaxCable_t {
-    double impedance; // ????????? ????
-    double diameter;  // ???????
-    double length;    // ???????
+    double impedance; // Хвильовий опір
+    double diameter;  // Діаметр
+    double length;    // Довжина
 };
 
-class CableInventory {
+// Мій клас
+class Cable {
 private:
-
     std::vector<CoaxCable_t> cables;
 
     bool validateInput(double impedance, double diameter, double length);
 
-public:
-    CableInventory();
-    ~CableInventory();
+    int getIndexInput(const std::string& prompt);
 
-    void addCable();        // ??????
-    void displayCables();   // ????????
-    void removeCable();     // ????????
+public:
+    Cable(); 
+    ~Cable(); 
+
+    void addCable();        
+    void insertCable();     
+    void removeCable();     
+    void swapCables();      
+    void clearInventory();  
+    void displayCables();   
 };
