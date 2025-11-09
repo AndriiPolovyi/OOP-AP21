@@ -124,6 +124,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+	<ClCompile Include="BarcodeScanner.cpp" />
+	<ClCompile Include="InformationReader.cpp" />
+	<ClCompile Include="RfidReader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
