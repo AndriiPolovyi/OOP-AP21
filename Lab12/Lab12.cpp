@@ -5,6 +5,7 @@
 #include "Date.h"
 
 int main() {
+    
     Date::setCurrentDate(22, 11, 2025);
     std::cout << "--- Laboratorna robota 12 (Variant 13) ---\n";
     std::cout << "Potochna data vstanovlena: " << Date::currentDate << "\n\n";
@@ -12,7 +13,7 @@ int main() {
     std::vector<Date> dates;
     dates.push_back(Date(10, 1, 2025));  
     dates.push_back(Date(1, 12, 2025));  
-    dates.push_back(Date(22, 11, 2020)); 
+    dates.push_back(Date(22, 11, 2020));
     dates.push_back(Date(25, 11, 2025)); 
     dates.push_back(Date(1, 1, 2030));   
 
