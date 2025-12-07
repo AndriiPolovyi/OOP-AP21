@@ -5,10 +5,14 @@
 class InformationReader {
 protected:
     std::string modelName;
-    std::string connectionType; 
+    std::string connectionType;
+    double price;
 
 public:
-    InformationReader(const std::string& model, const std::string& connection);
+    InformationReader(const std::string& model, const std::string& connection, double cost); 
     virtual ~InformationReader() = default;
+
     virtual void displayInfo() const;
+
+    friend class DeviceTester;
 };

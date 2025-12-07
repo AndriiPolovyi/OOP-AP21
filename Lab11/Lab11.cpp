@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <memory> 
+#include <memory>
 
 #include "InformationReader.h"
 #include "BarcodeScanner.h"
@@ -8,24 +8,24 @@
 #include "DeviceTester.h"
 
 int main() {
-   
     std::vector<std::unique_ptr<InformationReader>> devices;
 
-    devices.push_back(std::make_unique<BarcodeScanner>("Symbol LS2208", "USB", "Laser"));
-    devices.push_back(std::make_unique<RFIDReader>("Zebra RFD8500", "Bluetooth", "UHF", 6.0));
-    devices.push_back(std::make_unique<BarcodeScanner>("Datalogic QD2430", "USB", "2D Imager"));
+    devices.push_back(std::make_unique<BarcodeScanner>("Symbol LS2208", "USB", 3500.00, "Laser"));
+    devices.push_back(std::make_unique<RFIDReader>("Zebra RFD8500", "Bluetooth", 12000.50, "UHF", 6.0));
+    devices.push_back(std::make_unique<BarcodeScanner>("Datalogic QD2430", "USB", 4200.00, "2D Imager"));
 
-    std::cout << "--- Perelik prystroyiv ---" << std::endl;
+    std::cout << "--- Inventaryzatsiya ---" << std::endl;
     for (const auto& device : devices) {
-        device->displayInfo(); 
+        device->displayInfo();
     }
 
     DeviceTester tester;
 
-    std::cout << "\n--- Zapusk testiv druzhnim klasom ---" << std::endl;
     for (const auto& device : devices) {
-        tester.runDiagnostics(*device); 
+        tester.runDiagnostics(*device);
     }
+
+    tester.calculateTotals(devices);
 
     return 0;
 }
